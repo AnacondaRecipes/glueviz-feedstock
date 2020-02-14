@@ -26,6 +26,11 @@ requirements:
     - pip
     - setuptools >=30.3
     - setuptools_scm
+  host:
+    - python
+    - pip
+    - setuptools >=30.3
+    - setuptools_scm
   run:
     - glue-core >=0.15.3
     - glue-vispy-viewers >=0.12.2
