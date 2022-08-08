@@ -1,39 +1,37 @@
 # NOTE: this is a meta-package that includes the core glue-core code as well as stable
 # plugins. This is the main conda package we want in the Navigator, so we add the
-# app: entry here and not in the glue-core package. Even though glueviz is a
+# 'app:' entry here and not in the glue-core package. Even though glueviz is a
 # Python package on PyPI, and has a setup.py file, we don't include a build command
 # below since the only purpose of that command is to trigger the installation of the
 # dependencies.
 
-{% set version = "1.0.0" %}
+{% set version = "1.2.0" %}
 
 package:
   name: glueviz
-  version: {{version}}
+  version: {{ version }}
 
 source:
-  fn: glueviz-{{version}}.tar.gz
-  url: https://pypi.io/packages/source/g/glueviz/glueviz-{{version}}.tar.gz
-  sha256: 89db2b2331eb74f221251b129f6ce6b507f14101caea993ee0926ceeeaaf68ab
+  fn: glueviz-{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/g/glueviz/glueviz-{{ version }}.tar.gz
+  sha256: 795ddeef13b8f0392d9de5a318ee1a5b03ddfa6eada51986465e2a4b1549e372
 
 build:
   number: 0
-  script: "{{ PYTHON }} -m pip install . --no-deps -vv"
+  script: {{ PYTHON }} -m pip install . --no-deps -vv
+  skip: true  # [py<37]
 
 requirements:
-  build:
-    - python
-    - pip
-    - setuptools >=30.3
-    - setuptools_scm
   host:
     - python
     - pip
     - setuptools >=30.3
     - setuptools_scm
+    - wheel
   run:
-    - glue-core >=0.15.3
-    - glue-vispy-viewers >=0.12.2
+    - python
+    - glue-core >=1.2.0
+    - glue-vispy-viewers >=1.0.3
 
 test:
   commands:
@@ -48,7 +46,7 @@ app:
 
 about:
   home: http://glueviz.org
-  license: BSD 3-Clause
+  license: BSD-3-Clause
   license_file: LICENSE
   summary: Multi-dimensional linked data exploration
 
