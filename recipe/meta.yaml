@@ -11,9 +11,6 @@ package:
   name: glueviz
   version: {{version}}
 
-source:
-  path: @THISDIR@
-
 build:
   number: 0
   # Skipping unnecessary linux platforms that don't need viz.
@@ -40,8 +37,10 @@ app:
 
 about:
   home: https://glueviz.org
-  license: BSD 3-Clause
-  license_file: LICENSE
+  license: BSD-3-Clause
+  license_file_url: https://github.com/glue-viz/glueviz/blob/master/LICENSE
+  dev_url: https://github.com/glue-viz/glueviz
+  doc_url: http://docs.glueviz.org/
   summary: Multi-dimensional linked data exploration
 
 extra:
