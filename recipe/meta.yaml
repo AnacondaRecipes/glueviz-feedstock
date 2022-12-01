@@ -22,7 +22,7 @@ requirements:
     - python
   run:
     - glue-core =={{version}}
-    - glue-vispy-viewers >=1.0
+    - glue-vispy-viewers >=1.0.3
 
 test:
   commands:
@@ -38,10 +38,16 @@ app:
 about:
   home: https://glueviz.org
   license: BSD-3-Clause
-  license_file_url: https://github.com/glue-viz/glueviz/blob/master/LICENSE
+  license_family: BSD
+  license_url: https://github.com/glue-viz/glueviz/blob/master/LICENSE
   dev_url: https://github.com/glue-viz/glueviz
   doc_url: http://docs.glueviz.org/
   summary: Multi-dimensional linked data exploration
+  description: |
+    This package does not contain any code, but instead
+    is a meta-package that depends on the core glue code as well as stable
+    plugins that we want to provide to users by default.  This installs
+    glue-core and glue-vispy-viewers.
 
 extra:
   recipe-maintainers:
