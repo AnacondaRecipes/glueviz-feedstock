@@ -14,10 +14,9 @@ package:
 build:
   number: 0
   # Skipping unnecessary linux platforms that don't need viz.
-  skip: True  # [py<36 or ppc64le or s390x]
+  skip: True  # [py<37 or ppc64le or s390x]
 
 requirements:
-  is_meta_pkg: True
   host:
     - python
   run:
