@@ -4,8 +4,7 @@
 # Python package on PyPI, and has a setup.py file, we don't include a build command
 # below since the only purpose of that command is to trigger the installation of the
 # dependencies.
-
-{% set version = "1.2.4" %}
+{% set version = "1.4.0" %}
 
 package:
   name: glueviz
@@ -14,7 +13,7 @@ package:
 build:
   number: 0
   # Skipping unnecessary linux platforms that don't need viz.
-  skip: True  # [py<37 or ppc64le or s390x]
+  skip: true  # [py<37 or ppc64le or s390x]
 
 requirements:
   host:
@@ -47,6 +46,7 @@ about:
     is a meta-package that depends on the core glue code as well as stable
     plugins that we want to provide to users by default.  This installs
     glue-core and glue-vispy-viewers.
+
 
 extra:
   recipe-maintainers:
