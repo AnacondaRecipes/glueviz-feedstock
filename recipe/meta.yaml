@@ -5,29 +5,38 @@
 # below since the only purpose of that command is to trigger the installation of the
 # dependencies.
 
-{% set version = "1.2.4" %}
+{% set name = "glueviz" %}
+{% set version = "1.4.0" %}
 
 package:
-  name: glueviz
-  version: {{version}}
+  name: {{ name }}
+  version: {{ version }}
+
+source:
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: d3a6d2c845028ba8230bbc6130e09058206f4d6ad647b774a8f38f88ab6e53fc
 
 build:
   number: 0
-  # Skipping unnecessary linux platforms that don't need viz.
-  skip: True  # [py<37 or ppc64le or s390x]
+  skip: True  # [py<310]
+  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
 
 requirements:
   host:
+    - pip
     - python
+    - setuptools_scm
+    - setuptools >=61.2
   run:
-    - glue-core =={{version}}
+    - python
+    - glue-qt >=0.1.0
+    - glue-core >=1.1.0
     - glue-vispy-viewers >=1.0.3
 
 test:
   commands:
     - glue --version
-    - glue-deps list
-
+  
 app:
   entry: glue
   icon: logo.png
@@ -39,14 +48,14 @@ about:
   license: BSD-3-Clause
   license_family: BSD
   license_url: https://github.com/glue-viz/glueviz/blob/master/LICENSE
-  dev_url: https://github.com/glue-viz/glueviz
-  doc_url: http://docs.glueviz.org/
   summary: Multi-dimensional linked data exploration
   description: |
     This package does not contain any code, but instead
     is a meta-package that depends on the core glue code as well as stable
     plugins that we want to provide to users by default.  This installs
-    glue-core and glue-vispy-viewers.
+    glue-core and glue-vispy-viewers
+  dev_url: https://github.com/glue-viz/glueviz
+  doc_url: http://docs.glueviz.org
 
 extra:
   recipe-maintainers:
